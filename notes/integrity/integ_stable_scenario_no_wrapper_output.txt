@@ -1,0 +1,9 @@
+/home/zhoulab/MATRIX-Savage-Test/venv/lib/python3.10/site-packages/gym/wrappers/monitoring/video_recorder.py:9: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+  import distutils.spawn
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_integrity/CybORG/tests/integ_stable_scenario_no_wrapper.py", line 10, in <module>
+    from CybORG.Agents import BlueReactRemoveAgent, BlueReactRestoreAgent, BlueMonitorAgent, BlueReactRemoveRestoreContentAgent, GreenConsumeAgent, RedMeanderAgent_SIS_random, B_lineAgent_SIS_random
+ImportError: cannot import name 'BlueReactRemoveRestoreContentAgent' from 'CybORG.Agents' (/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Agents/__init__.py)

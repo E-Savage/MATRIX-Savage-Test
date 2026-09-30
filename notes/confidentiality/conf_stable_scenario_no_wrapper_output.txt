@@ -1,0 +1,21 @@
+/home/zhoulab/MATRIX-Savage-Test/venv/lib/python3.10/site-packages/gym/wrappers/monitoring/video_recorder.py:9: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+  import distutils.spawn
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_confidentiality/CybORG/tests/conf_stable_scenario_no_wrapper.py", line 54, in <module>
+    cyborg = CybORG(scenario_file, 'sim', agents={'Red': red_agent, 'Blue': blue_agent}, random_red_init=random_red_init, random_topologies=random_topology)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/CybORG.py", line 87, in __init__
+    self.environment_controller = self._create_env_controller(env_config, agents)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/CybORG.py", line 101, in _create_env_controller
+    return SimulationController(self.scenario_file, agents=agents, random_red_init=self.random_red_init, random_topologies=self.random_topologies, seed=self.seed, hp=self.hp)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Simulator/SimulationController.py", line 43, in __init__
+    super().__init__(scenario_filepath, scenario_mod=scenario_mod, agents=agents, random_topologies=random_topologies, hp=hp)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/EnvironmentController.py", line 59, in __init__
+    scenario_dict = self._parse_scenario(scenario_path)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Simulator/SimulationController.py", line 111, in _parse_scenario
+    scenario_dict = super()._parse_scenario(scenario_filepath, scenario_mod=scenario_mod)
+  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/EnvironmentController.py", line 411, in _parse_scenario
+    with open(scenario_file_path) as fIn:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/Scenarios/SIS_Confidentiality_Scenarios/Scenario2_SIS_4.yaml'
