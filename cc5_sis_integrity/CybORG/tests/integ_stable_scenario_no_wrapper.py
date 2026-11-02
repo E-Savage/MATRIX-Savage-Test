@@ -34,7 +34,7 @@ if __name__ == "__main__":
     # red_agent = B_lineAgent_SIS_random
 
     # 3. Game duration:
-    steps = 30
+    steps = 5
 
     # 4. Randomness:
     random_topology = False
