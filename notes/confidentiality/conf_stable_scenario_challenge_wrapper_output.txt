@@ -3,19 +3,2469 @@
 Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
 Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
 See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
-Traceback (most recent call last):
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_confidentiality/CybORG/tests/conf_stable_scenario_challenge_wrapper.py", line 46, in <module>
-    cyborg = CybORG(scenario_file, 'sim', agents={'Red': red_agent}, random_red_init=random_red_init, random_topologies=random_topology)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/CybORG.py", line 87, in __init__
-    self.environment_controller = self._create_env_controller(env_config, agents)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/CybORG.py", line 101, in _create_env_controller
-    return SimulationController(self.scenario_file, agents=agents, random_red_init=self.random_red_init, random_topologies=self.random_topologies, seed=self.seed, hp=self.hp)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Simulator/SimulationController.py", line 43, in __init__
-    super().__init__(scenario_filepath, scenario_mod=scenario_mod, agents=agents, random_topologies=random_topologies, hp=hp)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/EnvironmentController.py", line 59, in __init__
-    scenario_dict = self._parse_scenario(scenario_path)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Simulator/SimulationController.py", line 111, in _parse_scenario
-    scenario_dict = super()._parse_scenario(scenario_filepath, scenario_mod=scenario_mod)
-  File "/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/EnvironmentController.py", line 411, in _parse_scenario
-    with open(scenario_file_path) as fIn:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/zhoulab/MATRIX-Savage-Test/cc5_sis_availability/CybORG/CybORG/Shared/Scenarios/SIS_Confidentiality_Scenarios/Scenario2_SIS_4.yaml'
++-----------------+--------------+----------------------+-------+---------+-----
+-------+---------------------+
+|      Subnet     |  IP Address  |       Hostname       | Known | Scanned |   
+Access   |        Ports        |
++-----------------+--------------+----------------------+-------+---------+-----
+-------+---------------------+
+| 10.0.113.128/28 | 10.0.113.130 |   Subnet_0_Host_0    | False |  False  |    
+None    |       [25, 22]      |
+| 10.0.113.128/28 | 10.0.113.142 |   Subnet_0_Host_2    | False |  False  |    
+None    | [22, 3306, 80, 443] |
+| 10.0.113.128/28 | 10.0.113.134 |   Subnet_0_Host_3    | False |  False  |    
+None    | [22, 3306, 80, 443] |
+|  10.0.122.32/28 | 10.0.122.34  |  Subnet_1_Defender   | False |  False  |    
+None    |     [22, 53, 68]    |
+|  10.0.122.32/28 | 10.0.122.37  |   Subnet_1_Host_0    | False |  False  |    
+None    | [22, 3306, 80, 443] |
+|  10.0.122.32/28 | 10.0.122.41  |   Subnet_1_Host_1    | False |  False  |    
+None    |    [22, 445, 139]   |
+|  10.0.122.32/28 | 10.0.122.45  |   Subnet_1_Host_2    |  True |  False  | 
+Privileged |       [22, 21]      |
+|  10.0.72.240/28 | 10.0.72.254  |   Subnet_2_Host_4    | False |  False  |    
+None    | [22, 3306, 80, 443] |
+|  10.0.72.240/28 | 10.0.72.249  |   Subnet_2_Op_Auth   | False |  False  |    
+None    |    [22, 21, 9090]   |
+|  10.0.72.240/28 | 10.0.72.244  | Subnet_2_Op_Database | False |  False  |    
+None    |    [22, 21, 3306]   |
+|  10.0.72.240/28 | 10.0.72.250  |  Subnet_2_Op_Front   | False |  False  |    
+None    |     [22, 21, 80]    |
+|  10.0.72.240/28 | 10.0.72.253  |  Subnet_2_Op_Server  | False |  False  |    
+None    | [22, 3306, 80, 443] |
++-----------------+--------------+----------------------+-------+---------+-----
+-------+---------------------+
+
++++++++++++++++++++ Action Space (Red) +++++++++++++++++++
+0 : Sleep
+1 : DiscoverRemoteSystems 10.0.113.128/28
+2 : DiscoverRemoteSystems 10.0.122.32/28
+3 : Sleep
+4 : DiscoverRemoteSystems 10.0.72.240/28
+5 : DiscoverNetworkServices 10.0.113.130
+6 : DiscoverNetworkServices 10.0.113.142
+7 : DiscoverNetworkServices 10.0.113.134
+8 : Sleep
+9 : Sleep
+10 : DiscoverNetworkServices 10.0.122.34
+11 : DiscoverNetworkServices 10.0.122.37
+12 : DiscoverNetworkServices 10.0.122.41
+13 : DiscoverNetworkServices 10.0.122.45
+14 : Sleep
+15 : Sleep
+16 : Sleep
+17 : Sleep
+18 : Sleep
+19 : Sleep
+20 : DiscoverNetworkServices 10.0.72.254
+21 : DiscoverNetworkServices 10.0.72.249
+22 : DiscoverNetworkServices 10.0.72.244
+23 : DiscoverNetworkServices 10.0.72.250
+24 : DiscoverNetworkServices 10.0.72.253
+25 : ExploitRemoteService 10.0.113.130
+26 : ExploitRemoteService 10.0.113.142
+27 : ExploitRemoteService 10.0.113.134
+28 : Sleep
+29 : Sleep
+30 : ExploitRemoteService 10.0.122.34
+31 : ExploitRemoteService 10.0.122.37
+32 : ExploitRemoteService 10.0.122.41
+33 : ExploitRemoteService 10.0.122.45
+34 : Sleep
+35 : Sleep
+36 : Sleep
+37 : Sleep
+38 : Sleep
+39 : Sleep
+40 : ExploitRemoteService 10.0.72.254
+41 : ExploitRemoteService 10.0.72.249
+42 : ExploitRemoteService 10.0.72.244
+43 : ExploitRemoteService 10.0.72.250
+44 : ExploitRemoteService 10.0.72.253
+45 : BlueKeep 10.0.113.130
+46 : BlueKeep 10.0.113.142
+47 : BlueKeep 10.0.113.134
+48 : Sleep
+49 : Sleep
+50 : BlueKeep 10.0.122.34
+51 : BlueKeep 10.0.122.37
+52 : BlueKeep 10.0.122.41
+53 : BlueKeep 10.0.122.45
+54 : Sleep
+55 : Sleep
+56 : Sleep
+57 : Sleep
+58 : Sleep
+59 : Sleep
+60 : BlueKeep 10.0.72.254
+61 : BlueKeep 10.0.72.249
+62 : BlueKeep 10.0.72.244
+63 : BlueKeep 10.0.72.250
+64 : BlueKeep 10.0.72.253
+65 : EternalBlue 10.0.113.130
+66 : EternalBlue 10.0.113.142
+67 : EternalBlue 10.0.113.134
+68 : Sleep
+69 : Sleep
+70 : EternalBlue 10.0.122.34
+71 : EternalBlue 10.0.122.37
+72 : EternalBlue 10.0.122.41
+73 : EternalBlue 10.0.122.45
+74 : Sleep
+75 : Sleep
+76 : Sleep
+77 : Sleep
+78 : Sleep
+79 : Sleep
+80 : EternalBlue 10.0.72.254
+81 : EternalBlue 10.0.72.249
+82 : EternalBlue 10.0.72.244
+83 : EternalBlue 10.0.72.250
+84 : EternalBlue 10.0.72.253
+85 : FTPDirectoryTraversal 10.0.113.130
+86 : FTPDirectoryTraversal 10.0.113.142
+87 : FTPDirectoryTraversal 10.0.113.134
+88 : Sleep
+89 : Sleep
+90 : FTPDirectoryTraversal 10.0.122.34
+91 : FTPDirectoryTraversal 10.0.122.37
+92 : FTPDirectoryTraversal 10.0.122.41
+93 : FTPDirectoryTraversal 10.0.122.45
+94 : Sleep
+95 : Sleep
+96 : Sleep
+97 : Sleep
+98 : Sleep
+99 : Sleep
+100 : FTPDirectoryTraversal 10.0.72.254
+101 : FTPDirectoryTraversal 10.0.72.249
+102 : FTPDirectoryTraversal 10.0.72.244
+103 : FTPDirectoryTraversal 10.0.72.250
+104 : FTPDirectoryTraversal 10.0.72.253
+105 : HarakaRCE 10.0.113.130
+106 : HarakaRCE 10.0.113.142
+107 : HarakaRCE 10.0.113.134
+108 : Sleep
+109 : Sleep
+110 : HarakaRCE 10.0.122.34
+111 : HarakaRCE 10.0.122.37
+112 : HarakaRCE 10.0.122.41
+113 : HarakaRCE 10.0.122.45
+114 : Sleep
+115 : Sleep
+116 : Sleep
+117 : Sleep
+118 : Sleep
+119 : Sleep
+120 : HarakaRCE 10.0.72.254
+121 : HarakaRCE 10.0.72.249
+122 : HarakaRCE 10.0.72.244
+123 : HarakaRCE 10.0.72.250
+124 : HarakaRCE 10.0.72.253
+125 : HTTPRFI 10.0.113.130
+126 : HTTPRFI 10.0.113.142
+127 : HTTPRFI 10.0.113.134
+128 : Sleep
+129 : Sleep
+130 : HTTPRFI 10.0.122.34
+131 : HTTPRFI 10.0.122.37
+132 : HTTPRFI 10.0.122.41
+133 : HTTPRFI 10.0.122.45
+134 : Sleep
+135 : Sleep
+136 : Sleep
+137 : Sleep
+138 : Sleep
+139 : Sleep
+140 : HTTPRFI 10.0.72.254
+141 : HTTPRFI 10.0.72.249
+142 : HTTPRFI 10.0.72.244
+143 : HTTPRFI 10.0.72.250
+144 : HTTPRFI 10.0.72.253
+145 : HTTPSRFI 10.0.113.130
+146 : HTTPSRFI 10.0.113.142
+147 : HTTPSRFI 10.0.113.134
+148 : Sleep
+149 : Sleep
+150 : HTTPSRFI 10.0.122.34
+151 : HTTPSRFI 10.0.122.37
+152 : HTTPSRFI 10.0.122.41
+153 : HTTPSRFI 10.0.122.45
+154 : Sleep
+155 : Sleep
+156 : Sleep
+157 : Sleep
+158 : Sleep
+159 : Sleep
+160 : HTTPSRFI 10.0.72.254
+161 : HTTPSRFI 10.0.72.249
+162 : HTTPSRFI 10.0.72.244
+163 : HTTPSRFI 10.0.72.250
+164 : HTTPSRFI 10.0.72.253
+165 : SQLInjection 10.0.113.130
+166 : SQLInjection 10.0.113.142
+167 : SQLInjection 10.0.113.134
+168 : Sleep
+169 : Sleep
+170 : SQLInjection 10.0.122.34
+171 : SQLInjection 10.0.122.37
+172 : SQLInjection 10.0.122.41
+173 : SQLInjection 10.0.122.45
+174 : Sleep
+175 : Sleep
+176 : Sleep
+177 : Sleep
+178 : Sleep
+179 : Sleep
+180 : SQLInjection 10.0.72.254
+181 : SQLInjection 10.0.72.249
+182 : SQLInjection 10.0.72.244
+183 : SQLInjection 10.0.72.250
+184 : SQLInjection 10.0.72.253
+185 : PrivilegeEscalate Subnet_0_Host_0
+186 : PrivilegeEscalate Subnet_0_Host_2
+187 : PrivilegeEscalate Subnet_0_Host_3
+188 : Sleep
+189 : Sleep
+190 : PrivilegeEscalate Subnet_1_Defender
+191 : PrivilegeEscalate Subnet_1_Host_0
+192 : PrivilegeEscalate Subnet_1_Host_1
+193 : PrivilegeEscalate Subnet_1_Host_2
+194 : Sleep
+195 : Sleep
+196 : Sleep
+197 : Sleep
+198 : Sleep
+199 : Sleep
+200 : PrivilegeEscalate Subnet_2_Host_4
+201 : PrivilegeEscalate Subnet_2_Op_Auth
+202 : PrivilegeEscalate Subnet_2_Op_Database
+203 : PrivilegeEscalate Subnet_2_Op_Front
+204 : PrivilegeEscalate Subnet_2_Op_Server
+205 : Impact Subnet_0_Host_0
+206 : Impact Subnet_0_Host_2
+207 : Impact Subnet_0_Host_3
+208 : Sleep
+209 : Sleep
+210 : Impact Subnet_1_Defender
+211 : Impact Subnet_1_Host_0
+212 : Impact Subnet_1_Host_1
+213 : Impact Subnet_1_Host_2
+214 : Sleep
+215 : Sleep
+216 : Sleep
+217 : Sleep
+218 : Sleep
+219 : Sleep
+220 : Impact Subnet_2_Host_4
+221 : Impact Subnet_2_Op_Auth
+222 : Impact Subnet_2_Op_Database
+223 : Impact Subnet_2_Op_Front
+224 : Impact Subnet_2_Op_Server
+225 : SSHBruteForce 10.0.113.130
+226 : SSHBruteForce 10.0.113.142
+227 : SSHBruteForce 10.0.113.134
+228 : Sleep
+229 : Sleep
+230 : SSHBruteForce 10.0.122.34
+231 : SSHBruteForce 10.0.122.37
+232 : SSHBruteForce 10.0.122.41
+233 : SSHBruteForce 10.0.122.45
+234 : Sleep
+235 : Sleep
+236 : Sleep
+237 : Sleep
+238 : Sleep
+239 : Sleep
+240 : SSHBruteForce 10.0.72.254
+241 : SSHBruteForce 10.0.72.249
+242 : SSHBruteForce 10.0.72.244
+243 : SSHBruteForce 10.0.72.250
+244 : SSHBruteForce 10.0.72.253
+
++++++++++++++++++++ Action Space (Blue) +++++++++++++++++++
+0 : Sleep
+1 : Monitor
+2 : Analyse Subnet_0_Host_0
+3 : Analyse Subnet_0_Host_2
+4 : Analyse Subnet_0_Host_3
+5 : Sleep
+6 : Sleep
+7 : Analyse Subnet_1_Defender
+8 : Analyse Subnet_1_Host_0
+9 : Analyse Subnet_1_Host_1
+10 : Analyse Subnet_1_Host_2
+11 : Sleep
+12 : Sleep
+13 : Sleep
+14 : Sleep
+15 : Sleep
+16 : Sleep
+17 : Analyse Subnet_2_Host_4
+18 : Analyse Subnet_2_Op_Auth
+19 : Analyse Subnet_2_Op_Database
+20 : Analyse Subnet_2_Op_Front
+21 : Analyse Subnet_2_Op_Server
+22 : Remove Subnet_0_Host_0
+23 : Remove Subnet_0_Host_2
+24 : Remove Subnet_0_Host_3
+25 : Sleep
+26 : Sleep
+27 : Remove Subnet_1_Defender
+28 : Remove Subnet_1_Host_0
+29 : Remove Subnet_1_Host_1
+30 : Remove Subnet_1_Host_2
+31 : Sleep
+32 : Sleep
+33 : Sleep
+34 : Sleep
+35 : Sleep
+36 : Sleep
+37 : Remove Subnet_2_Host_4
+38 : Remove Subnet_2_Op_Auth
+39 : Remove Subnet_2_Op_Database
+40 : Remove Subnet_2_Op_Front
+41 : Remove Subnet_2_Op_Server
+42 : DecoyApache Subnet_0_Host_0
+43 : DecoyApache Subnet_0_Host_2
+44 : DecoyApache Subnet_0_Host_3
+45 : Sleep
+46 : Sleep
+47 : DecoyApache Subnet_1_Defender
+48 : DecoyApache Subnet_1_Host_0
+49 : DecoyApache Subnet_1_Host_1
+50 : DecoyApache Subnet_1_Host_2
+51 : Sleep
+52 : Sleep
+53 : Sleep
+54 : Sleep
+55 : Sleep
+56 : Sleep
+57 : DecoyApache Subnet_2_Host_4
+58 : DecoyApache Subnet_2_Op_Auth
+59 : DecoyApache Subnet_2_Op_Database
+60 : DecoyApache Subnet_2_Op_Front
+61 : DecoyApache Subnet_2_Op_Server
+62 : DecoyFemitter Subnet_0_Host_0
+63 : DecoyFemitter Subnet_0_Host_2
+64 : DecoyFemitter Subnet_0_Host_3
+65 : Sleep
+66 : Sleep
+67 : DecoyFemitter Subnet_1_Defender
+68 : DecoyFemitter Subnet_1_Host_0
+69 : DecoyFemitter Subnet_1_Host_1
+70 : DecoyFemitter Subnet_1_Host_2
+71 : Sleep
+72 : Sleep
+73 : Sleep
+74 : Sleep
+75 : Sleep
+76 : Sleep
+77 : DecoyFemitter Subnet_2_Host_4
+78 : DecoyFemitter Subnet_2_Op_Auth
+79 : DecoyFemitter Subnet_2_Op_Database
+80 : DecoyFemitter Subnet_2_Op_Front
+81 : DecoyFemitter Subnet_2_Op_Server
+82 : DecoyHarakaSMPT Subnet_0_Host_0
+83 : DecoyHarakaSMPT Subnet_0_Host_2
+84 : DecoyHarakaSMPT Subnet_0_Host_3
+85 : Sleep
+86 : Sleep
+87 : DecoyHarakaSMPT Subnet_1_Defender
+88 : DecoyHarakaSMPT Subnet_1_Host_0
+89 : DecoyHarakaSMPT Subnet_1_Host_1
+90 : DecoyHarakaSMPT Subnet_1_Host_2
+91 : Sleep
+92 : Sleep
+93 : Sleep
+94 : Sleep
+95 : Sleep
+96 : Sleep
+97 : DecoyHarakaSMPT Subnet_2_Host_4
+98 : DecoyHarakaSMPT Subnet_2_Op_Auth
+99 : DecoyHarakaSMPT Subnet_2_Op_Database
+100 : DecoyHarakaSMPT Subnet_2_Op_Front
+101 : DecoyHarakaSMPT Subnet_2_Op_Server
+102 : DecoySmss Subnet_0_Host_0
+103 : DecoySmss Subnet_0_Host_2
+104 : DecoySmss Subnet_0_Host_3
+105 : Sleep
+106 : Sleep
+107 : DecoySmss Subnet_1_Defender
+108 : DecoySmss Subnet_1_Host_0
+109 : DecoySmss Subnet_1_Host_1
+110 : DecoySmss Subnet_1_Host_2
+111 : Sleep
+112 : Sleep
+113 : Sleep
+114 : Sleep
+115 : Sleep
+116 : Sleep
+117 : DecoySmss Subnet_2_Host_4
+118 : DecoySmss Subnet_2_Op_Auth
+119 : DecoySmss Subnet_2_Op_Database
+120 : DecoySmss Subnet_2_Op_Front
+121 : DecoySmss Subnet_2_Op_Server
+122 : DecoySSHD Subnet_0_Host_0
+123 : DecoySSHD Subnet_0_Host_2
+124 : DecoySSHD Subnet_0_Host_3
+125 : Sleep
+126 : Sleep
+127 : DecoySSHD Subnet_1_Defender
+128 : DecoySSHD Subnet_1_Host_0
+129 : DecoySSHD Subnet_1_Host_1
+130 : DecoySSHD Subnet_1_Host_2
+131 : Sleep
+132 : Sleep
+133 : Sleep
+134 : Sleep
+135 : Sleep
+136 : Sleep
+137 : DecoySSHD Subnet_2_Host_4
+138 : DecoySSHD Subnet_2_Op_Auth
+139 : DecoySSHD Subnet_2_Op_Database
+140 : DecoySSHD Subnet_2_Op_Front
+141 : DecoySSHD Subnet_2_Op_Server
+142 : DecoySvchost Subnet_0_Host_0
+143 : DecoySvchost Subnet_0_Host_2
+144 : DecoySvchost Subnet_0_Host_3
+145 : Sleep
+146 : Sleep
+147 : DecoySvchost Subnet_1_Defender
+148 : DecoySvchost Subnet_1_Host_0
+149 : DecoySvchost Subnet_1_Host_1
+150 : DecoySvchost Subnet_1_Host_2
+151 : Sleep
+152 : Sleep
+153 : Sleep
+154 : Sleep
+155 : Sleep
+156 : Sleep
+157 : DecoySvchost Subnet_2_Host_4
+158 : DecoySvchost Subnet_2_Op_Auth
+159 : DecoySvchost Subnet_2_Op_Database
+160 : DecoySvchost Subnet_2_Op_Front
+161 : DecoySvchost Subnet_2_Op_Server
+162 : DecoyTomcat Subnet_0_Host_0
+163 : DecoyTomcat Subnet_0_Host_2
+164 : DecoyTomcat Subnet_0_Host_3
+165 : Sleep
+166 : Sleep
+167 : DecoyTomcat Subnet_1_Defender
+168 : DecoyTomcat Subnet_1_Host_0
+169 : DecoyTomcat Subnet_1_Host_1
+170 : DecoyTomcat Subnet_1_Host_2
+171 : Sleep
+172 : Sleep
+173 : Sleep
+174 : Sleep
+175 : Sleep
+176 : Sleep
+177 : DecoyTomcat Subnet_2_Host_4
+178 : DecoyTomcat Subnet_2_Op_Auth
+179 : DecoyTomcat Subnet_2_Op_Database
+180 : DecoyTomcat Subnet_2_Op_Front
+181 : DecoyTomcat Subnet_2_Op_Server
+182 : DecoyVsftpd Subnet_0_Host_0
+183 : DecoyVsftpd Subnet_0_Host_2
+184 : DecoyVsftpd Subnet_0_Host_3
+185 : Sleep
+186 : Sleep
+187 : DecoyVsftpd Subnet_1_Defender
+188 : DecoyVsftpd Subnet_1_Host_0
+189 : DecoyVsftpd Subnet_1_Host_1
+190 : DecoyVsftpd Subnet_1_Host_2
+191 : Sleep
+192 : Sleep
+193 : Sleep
+194 : Sleep
+195 : Sleep
+196 : Sleep
+197 : DecoyVsftpd Subnet_2_Host_4
+198 : DecoyVsftpd Subnet_2_Op_Auth
+199 : DecoyVsftpd Subnet_2_Op_Database
+200 : DecoyVsftpd Subnet_2_Op_Front
+201 : DecoyVsftpd Subnet_2_Op_Server
+202 : Restore Subnet_0_Host_0
+203 : Restore Subnet_0_Host_2
+204 : Restore Subnet_0_Host_3
+205 : Sleep
+206 : Sleep
+207 : Restore Subnet_1_Defender
+208 : Restore Subnet_1_Host_0
+209 : Restore Subnet_1_Host_1
+210 : Restore Subnet_1_Host_2
+211 : Sleep
+212 : Sleep
+213 : Sleep
+214 : Sleep
+215 : Sleep
+216 : Sleep
+217 : Restore Subnet_2_Host_4
+218 : Restore Subnet_2_Op_Auth
+219 : Restore Subnet_2_Op_Database
+220 : Restore Subnet_2_Op_Front
+221 : Restore Subnet_2_Op_Server
+222 : Block Subnet_0_Host_0
+223 : Block Subnet_0_Host_2
+224 : Block Subnet_0_Host_3
+225 : Sleep
+226 : Sleep
+227 : Block Subnet_1_Defender
+228 : Block Subnet_1_Host_0
+229 : Block Subnet_1_Host_1
+230 : Block Subnet_1_Host_2
+231 : Sleep
+232 : Sleep
+233 : Sleep
+234 : Sleep
+235 : Sleep
+236 : Sleep
+237 : Block Subnet_2_Host_4
+238 : Block Subnet_2_Op_Auth
+239 : Block Subnet_2_Op_Database
+240 : Block Subnet_2_Op_Front
+241 : Block Subnet_2_Op_Server
+
+
+------------------- Game with env seed 0 -------------------
+
++++++++++++++++++++ Step 0 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverRemoteSystems 10.0.122.32/28
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.34': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.122.34'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    },
+    '10.0.122.37': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.122.37'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    },
+    '10.0.122.41': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.122.41'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    },
+    '10.0.122.45': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.122.45'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 1 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverNetworkServices 10.0.122.41
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_1': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'remote_port': 55007,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 445,
+                        'remote_port': 50501,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 139,
+                        'remote_port': 54465,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.41')}],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_1',
+            'OSType': <OperatingSystemType.WINDOWS: 2>,
+            'OSDistribution': <OperatingSystemDistribution.WINDOWS_SVR_2008: 4>,
+            'OSVersion': <OperatingSystemVersion.W6_1_7601: 13>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.41': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'local_address': IPv4Address('10.0.122.41')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 445,
+                        'local_address': IPv4Address('10.0.122.41')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 139,
+                        'local_address': IPv4Address('10.0.122.41')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.41')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 2 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: ExploitRemoteService 10.0.122.41
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  0  0  1  1  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_1': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 139,
+                        'remote_port': 53133,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'PID': 17762,
+                'Connections': [
+                    {
+                        'local_port': 49417,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.41')}],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_1',
+            'OSType': <OperatingSystemType.WINDOWS: 2>,
+            'OSDistribution': <OperatingSystemDistribution.WINDOWS_SVR_2008: 4>,
+            'OSVersion': <OperatingSystemVersion.W6_1_7601: 13>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.45': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 4444,
+                        'remote_port': 49417,
+                        'local_address': IPv4Address('10.0.122.45'),
+                        'remote_address': IPv4Address('10.0.122.41')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION_HANDLER: 10>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.45')}]
+    },
+    '10.0.122.41': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 49417,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION: 11>
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 139,
+                        'local_address': IPv4Address('10.0.122.41'),
+                        'Status': <ProcessState.OPEN: 2>
+                    }
+                ],
+                'Process Type': <ProcessType.SMB: 4>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.41')}],
+        'Sessions': [
+            {
+                'ID': 1,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_1',
+            'OSType': <OperatingSystemType.WINDOWS: 2>
+        }
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 3 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_1_Host_1
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_1': {
+        'Sessions': [
+            {
+                'Username': 'SYSTEM',
+                'ID': 1,
+                'Timeout': 0,
+                'PID': 17762,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [{'PID': 17762, 'Username': 'SYSTEM'}],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.122.41'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 4 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverNetworkServices 10.0.122.34
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  1  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Defender': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'remote_port': 54600,
+                        'local_address': IPv4Address('10.0.122.34'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 53,
+                        'remote_port': 56133,
+                        'local_address': IPv4Address('10.0.122.34'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 53,
+                        'remote_port': 50170,
+                        'local_address': IPv4Address('10.0.122.34'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 68,
+                        'remote_port': 50800,
+                        'local_address': IPv4Address('10.0.122.34'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.34')}],
+        'System info': {
+            'Hostname': 'Subnet_1_Defender',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.U18_04_3: 6>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.34': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'local_address': IPv4Address('10.0.122.34')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 53,
+                        'local_address': IPv4Address('10.0.122.34')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 53,
+                        'local_address': IPv4Address('10.0.122.34')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 68,
+                        'local_address': IPv4Address('10.0.122.34')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.34')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 5 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverNetworkServices 10.0.122.37
+--- Rewards --- 
+
+Blue: 0.0
+Red: 0.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_0': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'remote_port': 49893,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 80,
+                        'remote_port': 58554,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'remote_port': 59542,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 443,
+                        'remote_port': 57904,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.37')}],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_0',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.37': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'local_address': IPv4Address('10.0.122.37')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 80,
+                        'local_address': IPv4Address('10.0.122.37')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'local_address': IPv4Address('10.0.122.37')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 443,
+                        'local_address': IPv4Address('10.0.122.37')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.37')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 6 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: ExploitRemoteService 10.0.122.37
+--- Rewards --- 
+
+Blue: -1.0
+Red: 1.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  1  1  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_0': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'remote_port': 58588,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'PID': 25638,
+                'Connections': [
+                    {
+                        'local_port': 51113,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.37')}],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_0',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.45': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 4444,
+                        'remote_port': 51113,
+                        'local_address': IPv4Address('10.0.122.45'),
+                        'remote_address': IPv4Address('10.0.122.37')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION_HANDLER: 10>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.45')}]
+    },
+    '10.0.122.37': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 51113,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION: 11>
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'local_address': IPv4Address('10.0.122.37'),
+                        'Status': <ProcessState.OPEN: 2>
+                    }
+                ],
+                'Process Type': <ProcessType.MYSQL: 12>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.37')}],
+        'Sessions': [
+            {
+                'ID': 2,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'System info': {
+            'Hostname': 'Subnet_1_Host_0',
+            'OSType': <OperatingSystemType.LINUX: 3>
+        }
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 7 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_1_Host_0
+--- Rewards --- 
+
+Blue: -1.0
+Red: 1.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_1_Host_0': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 2,
+                'Timeout': 0,
+                'PID': 25638,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [{'PID': 25638, 'Username': 'root'}],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.122.37'),
+                'Subnet': IPv4Network('10.0.122.32/28')
+            }
+        ]
+    },
+    'Subnet_2_Host_4': {
+        'Interface': [{'IP Address': IPv4Address('10.0.72.254')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 8 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverNetworkServices 10.0.72.254
+--- Rewards --- 
+
+Blue: -1.0
+Red: 1.0
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Host_4': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'remote_port': 51053,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 80,
+                        'remote_port': 49748,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'remote_port': 59072,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 443,
+                        'remote_port': 49506,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.254')}],
+        'System info': {
+            'Hostname': 'Subnet_2_Host_4',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.72.254': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'local_address': IPv4Address('10.0.72.254')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 80,
+                        'local_address': IPv4Address('10.0.72.254')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'local_address': IPv4Address('10.0.72.254')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 443,
+                        'local_address': IPv4Address('10.0.72.254')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.254')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 9 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: ExploitRemoteService 10.0.72.254
+--- Rewards --- 
+
+Blue: -1.1
+Red: 1.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  1  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Host_4': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'remote_port': 50152,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'PID': 27893,
+                'Connections': [
+                    {
+                        'local_port': 49525,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.254')}],
+        'System info': {
+            'Hostname': 'Subnet_2_Host_4',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.45': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 4444,
+                        'remote_port': 49525,
+                        'local_address': IPv4Address('10.0.122.45'),
+                        'remote_address': IPv4Address('10.0.72.254')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION_HANDLER: 10>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.45')}]
+    },
+    '10.0.72.254': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 49525,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION: 11>
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 3306,
+                        'local_address': IPv4Address('10.0.72.254'),
+                        'Status': <ProcessState.OPEN: 2>
+                    }
+                ],
+                'Process Type': <ProcessType.MYSQL: 12>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.254')}],
+        'Sessions': [
+            {
+                'ID': 3,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'System info': {
+            'Hostname': 'Subnet_2_Host_4',
+            'OSType': <OperatingSystemType.LINUX: 3>
+        }
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 10 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_2_Host_4
+--- Rewards --- 
+
+Blue: -1.1
+Red: 1.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Host_4': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 3,
+                'Timeout': 0,
+                'PID': 27893,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [{'PID': 27893, 'Username': 'root'}],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.72.254'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 11 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverRemoteSystems 10.0.72.240/28
+--- Rewards --- 
+
+Blue: -1.1
+Red: 1.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.72.254': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.72.254'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    },
+    '10.0.72.249': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.72.249'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    },
+    '10.0.72.244': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.72.244'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    },
+    '10.0.72.250': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.72.250'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    },
+    '10.0.72.253': {
+        'Interface': [
+            {
+                'IP Address': IPv4Address('10.0.72.253'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 12 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: DiscoverNetworkServices 10.0.72.249
+--- Rewards --- 
+
+Blue: -1.1
+Red: 1.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'remote_port': 59751,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 21,
+                        'remote_port': 54084,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 9090,
+                        'remote_port': 54891,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.249')}],
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.72.249': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 22,
+                        'local_address': IPv4Address('10.0.72.249')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 21,
+                        'local_address': IPv4Address('10.0.72.249')
+                    }
+                ]
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 9090,
+                        'local_address': IPv4Address('10.0.72.249')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.249')}]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 13 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: ExploitRemoteService 10.0.72.249
+--- Rewards --- 
+
+Blue: -1.1
+Red: 1.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  1  1  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 21,
+                        'remote_port': 55562,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            },
+            {
+                'PID': 17048,
+                'Connections': [
+                    {
+                        'local_port': 52418,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ]
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.249')}],
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    }
+}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    '10.0.122.45': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 4444,
+                        'remote_port': 52418,
+                        'local_address': IPv4Address('10.0.122.45'),
+                        'remote_address': IPv4Address('10.0.72.249')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION_HANDLER: 10>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.122.45')}]
+    },
+    '10.0.72.249': {
+        'Processes': [
+            {
+                'Connections': [
+                    {
+                        'local_port': 52418,
+                        'remote_port': 4444,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.0.122.45')
+                    }
+                ],
+                'Process Type': <ProcessType.REVERSE_SESSION: 11>
+            },
+            {
+                'Connections': [
+                    {
+                        'local_port': 21,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'Status': <ProcessState.OPEN: 2>
+                    }
+                ],
+                'Process Type': <ProcessType.FEMITTER: 6>
+            }
+        ],
+        'Interface': [{'IP Address': IPv4Address('10.0.72.249')}],
+        'Sessions': [
+            {
+                'ID': 4,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>
+        }
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 14 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -2.1
+Red: 2.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 4,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            },
+            {'ID': 5, 'Type': <SessionType.TUNNEL: 13>, 'Agent': 'Red'}
+        ],
+        'Processes': [
+            {
+                'PID': 1015,
+                'Connections': [
+                    {
+                        'local_port': 25059,
+                        'remote_port': 53,
+                        'local_address': IPv4Address('10.0.72.249'),
+                        'remote_address': IPv4Address('10.50.86.104'),
+                        'Status': <ProcessState.OPEN: 2>
+                    }
+                ],
+                'Process Type': <ProcessType.TUNNEL: 13>
+            },
+            {'PID': 1074, 'Service Name': 'AuthService'}
+        ],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.72.249'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 15 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -12.1
+Red: 12.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 16 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -12.1
+Red: 12.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.FALSE: 3>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 17 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -12.1
+Red: 12.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 4,
+                'Timeout': 0,
+                'PID': 17048,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [
+            {'PID': 17048, 'Username': 'root'},
+            {'PID': 1074, 'Service Name': 'AuthService'}
+        ],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.72.249'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 18 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -22.1
+Red: 22.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 19 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -22.1
+Red: 22.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.FALSE: 3>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 20 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -22.1
+Red: 22.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 4,
+                'Timeout': 0,
+                'PID': 17048,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [
+            {'PID': 17048, 'Username': 'root'},
+            {'PID': 1074, 'Service Name': 'AuthService'}
+        ],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.72.249'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 21 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -32.1
+Red: 32.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    },
+    'Network Activity': [
+        {
+            'suspicious_network_activity': True,
+            'IP Address': IPv4Address('10.0.72.249')
+        }
+    ]
+}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 22 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -42.1
+Red: 42.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    },
+    'Network Activity': [
+        {
+            'suspicious_network_activity': True,
+            'IP Address': IPv4Address('10.0.72.249')
+        }
+    ]
+}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 23 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -52.1
+Red: 52.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    },
+    'Network Activity': [
+        {
+            'suspicious_network_activity': True,
+            'IP Address': IPv4Address('10.0.72.249')
+        }
+    ]
+}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 24 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -62.1
+Red: 62.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 25 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -72.1
+Red: 72.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 26 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -82.1
+Red: 82.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    },
+    'Network Activity': [
+        {
+            'suspicious_network_activity': True,
+            'IP Address': IPv4Address('10.0.72.249')
+        }
+    ]
+}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 27 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -82.1
+Red: 82.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.FALSE: 3>}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 28 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: PrivilegeEscalate Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -82.1
+Red: 82.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{'success': <TrinaryEnum.TRUE: 1>}
+
+--- Observation Red ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'Sessions': [
+            {
+                'Username': 'root',
+                'ID': 4,
+                'Timeout': 0,
+                'PID': 17048,
+                'Type': <SessionType.RED_REVERSE_SHELL: 11>,
+                'Agent': 'Red'
+            }
+        ],
+        'Processes': [
+            {'PID': 17048, 'Username': 'root'},
+            {'PID': 1074, 'Service Name': 'AuthService'}
+        ],
+        'Interface': [
+            {
+                'Interface Name': 'eth0',
+                'IP Address': IPv4Address('10.0.72.249'),
+                'Subnet': IPv4Network('10.0.72.240/28')
+            }
+        ]
+    }
+}
+----------------------------------------------
+
+
+
+
++++++++++++++++++++ Step 29 +++++++++++++++++++
+--- Actions --- 
+
+Blue: Monitor
+Red: Impact Subnet_2_Op_Auth
+--- Rewards --- 
+
+Blue: -92.1
+Red: 92.1
+
+--- Observation Blue (Vector) ---
+[ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1  0  0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0]
+
+--- Observation Blue ---
+{
+    'success': <TrinaryEnum.TRUE: 1>,
+    'Subnet_2_Op_Auth': {
+        'System info': {
+            'Hostname': 'Subnet_2_Op_Auth',
+            'OSType': <OperatingSystemType.LINUX: 3>,
+            'OSDistribution': <OperatingSystemDistribution.UBUNTU: 8>,
+            'OSVersion': <OperatingSystemVersion.UNKNOWN: 1>,
+            'Architecture': <Architecture.x64: 2>
+        }
+    },
+    'Network Activity': [
+        {
+            'suspicious_network_activity': True,
+            'IP Address': IPv4Address('10.0.72.249')
+        }
+    ]
+}
+
+--- Observation Red ---
+{'success': <TrinaryEnum.TRUE: 1>}
+----------------------------------------------
+
+
+

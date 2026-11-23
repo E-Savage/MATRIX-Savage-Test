@@ -44,7 +44,14 @@ for dir in "${DIRS[@]}"; do
         
         # Create the specific notes directory if it doesn't exist yet
         mkdir -p "$START_DIR/$NOTE_SUBDIR"
-        
+
+        # All three variants share the package name "CybORG" and the venv only
+        # has one installed. Put this variant's package first on the import path
+        # so each test runs against its own code and scenario files.
+        VARIANT_ROOT="$START_DIR/${dir%/tests}"
+        export PYTHONPATH="$VARIANT_ROOT${PYTHONPATH:+:$PYTHONPATH}"
+        echo "Using CybORG from: $VARIANT_ROOT"
+
         cd "$dir" || continue
         
         # Loop through and run every Python file in this folder
@@ -58,6 +65,9 @@ for dir in "${DIRS[@]}"; do
             
             echo "Running: $file (Saving output to $NOTE_SUBDIR/${base_name}_output.txt)"
             
+            # Replace any earlier output (an earlier sudo run left root-owned files)
+            rm -f "$output_file"
+
             # Run the file and save BOTH regular logs and errors (2>&1) to the text file
             python "$file" > "$output_file" 2>&1
             
@@ -65,8 +75,9 @@ for dir in "${DIRS[@]}"; do
             echo "-----------------------------------"
         done
         
-        # Go back to the starting directory
+        # Go back to the starting directory and drop this variant from the path
         cd "$START_DIR" || exit
+        unset PYTHONPATH
     else
         echo "Warning: Directory '$dir' does not exist. Skipping."
     fi

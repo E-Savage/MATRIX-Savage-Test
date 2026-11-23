@@ -2,3 +2,7 @@ venv
 venv/*
 __pycache__/
 *CybORG.egg-info
+
+# Per-game files the simulator generates at runtime (named by a random game id)
+cc5_sis_*/CybORG/CybORG/Shared/Scenarios/services/*-*-*-*-*/
+cc5_sis_*/CybORG/CybORG/Shared/Scenarios/Random_Topologies_SIS/*-*-*-*-*.yaml
