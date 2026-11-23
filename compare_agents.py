@@ -134,6 +134,7 @@ def play_game(job):
         game_agents["Green"] = agents.GreenConsumeAgent
 
     blue_acts = Counter()
+    env = None
     try:
         env = CybORG(scenario_file, "sim", agents=game_agents,
                      random_red_init=False, random_topologies=False)
@@ -156,10 +157,32 @@ def play_game(job):
             blue_acts[type(env.get_last_action("Blue")).__name__] += 1
     except Exception as exc:  # record and keep going; one bad game shouldn't stop the sweep
         row["error"] = f"{type(exc).__name__}: {exc}"[:200]
+    finally:
+        remove_game_files(env)
 
     row["blue_total"] = round(row["blue_total"], 2)
     row["blue_actions"] = ";".join(f"{k}={v}" for k, v in sorted(blue_acts.items()))
     return row
+
+
+def remove_game_files(env):
+    """Delete the per-game folder the integrity variant writes for each game.
+
+    The integrity simulator copies its web/database content into
+    Shared/Scenarios/services/<game_uuid>/ for every game, and CybORG's own
+    shutdown() only removes it for random-topology games. Without this, a
+    large sweep leaves thousands of folders behind.
+    """
+    import inspect
+    import re
+    import shutil
+
+    game_uuid = getattr(env, "game_uuid", None)
+    if not game_uuid or not re.fullmatch(r"[0-9a-f-]{36}", game_uuid):
+        return  # never build a path from anything but a real game id
+    from CybORG import CybORG
+    services = os.path.join(os.path.dirname(inspect.getfile(CybORG)), "Shared", "Scenarios", "services")
+    shutil.rmtree(os.path.join(services, game_uuid), ignore_errors=True)
 
 
 # --------------------------------------------------------------------------
